@@ -42,7 +42,7 @@ class ScanController extends Controller
             $end = ' 2100-10-26 09:00:48';
         }
 
-        $scans = Scan::where('created_at','>',$start)->where('created_at','<',$end)->get();
+        $scans = Scan::where('created_at','>=',$start)->where('created_at','=<',$end)->get();
         $array = array();
         $array[] = ["Number","Date"];
         foreach($scans as $scan){
