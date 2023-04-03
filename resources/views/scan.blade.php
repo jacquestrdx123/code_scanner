@@ -90,9 +90,39 @@
                             <form method="POST" action="/scan">
                                 @csrf
                                 <div class="flex-col justify-center">
-                                    <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Scan Here</label>
+                                    <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">PN Number</label>
                                     <div class="flex mt-1">
                                         <input type="text" autofocus name="pn_number" id="pn_number"
+                                               class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                               placeholder="Scan Here">
+                                    </div>
+                                    <label for="order_number" class="text-center block text-sm font-medium text-gray-700">Order Number</label>
+                                    <div class="flex mt-1">
+                                        <input type="text" name="order_number" id="order_number"
+                                               class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                               placeholder="Scan Here">
+                                    </div>
+                                    <label for="start_pick" class="text-center block text-sm font-medium text-gray-700">Start Pick</label>
+                                    <div class="flex mt-1">
+                                        <input type="text" name="start_pick" id="start_pick"
+                                               class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                               placeholder="Scan Here">
+                                    </div>
+                                    <label for="stop_pick" class="text-center block text-sm font-medium text-gray-700">Stop Pick</label>
+                                    <div class="flex mt-1">
+                                        <input type="text" name="stop_pick" id="stop_pick"
+                                               class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                               placeholder="Scan Here">
+                                    </div>
+                                    <label for="load_truck" class="text-center block text-sm font-medium text-gray-700">Load Truck</label>
+                                    <div class="flex mt-1">
+                                        <input type="text" name="load_truck" id="load_truck"
+                                               class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                               placeholder="Scan Here">
+                                    </div>
+                                    <label for="invoice_number" class="text-center block text-sm font-medium text-gray-700">Invoice Number</label>
+                                    <div class="flex mt-1">
+                                        <input type="text" name="invoice_number" id="invoice_number"
                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                                placeholder="Scan Here">
                                     </div>
