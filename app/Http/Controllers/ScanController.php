@@ -47,6 +47,7 @@ class ScanController extends Controller
     public function updateScan(Request $request){
         $input = $request->all();
         $scan = Scan::find($input['scan_id']);
+        dd($scan);
         if(array_key_exists('invoice_number',$input)){
                 $currentDateTime = date('Y-m-d H:i:s');
                 if($scan->current_state=="security"){
