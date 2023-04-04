@@ -90,7 +90,7 @@
                             <form method="POST" action="/scan">
                                 @csrf
                                 <div class="flex-col justify-center">
-                                    <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Input</label>
+                                    <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Open/Scan Document</label>
                                     <div class="flex mt-1">
                                         <input type="text" autofocus name="input" id="input"
                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
