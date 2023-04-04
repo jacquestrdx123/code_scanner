@@ -83,8 +83,13 @@
             </div>
         </header>
         <main>
-            <div>
-                <h2 class="text-3xl font-extrabold dark:text-white">Last State Completed : {{$scan->current_state}}</h2>
+            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <!-- Replace with your content -->
+                <div class="px-4 py-8 sm:px-0">
+                    <div>
+                        <h2 class="text-3xl font-extrabold dark:text-white">Last State Completed : {{$scan->current_state}}</h2>
+                    </div>
+                </div>
             </div>
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
