@@ -15,6 +15,7 @@ class ScanController extends Controller
                 'order_number' => $input['order_number']
             ]);
         }
+        dd($scan);
         if($scan->current_state=="created"){
             $scan->current_state = "order";
             $scan->order_time = $currentDateTime;
