@@ -90,6 +90,7 @@
                         <div>
                             <h4>Last State Completed : {{$scan->current_state}}</h4>
                         </div>
+                        @if($scan->current_state !=="proof_of_delivery")
                             <form method="POST" action="/update-scan">
                                 @csrf
                                 @if( ($scan->current_state == "confirmation_of_picking") )
@@ -139,6 +140,11 @@
 
 
                             </form>
+                        @else
+                            <div>
+                                <h4>Order has been delivered</h4>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <!-- /End replace -->
