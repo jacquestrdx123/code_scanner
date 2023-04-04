@@ -11,7 +11,9 @@ class ScanController extends Controller
         $input = $request->all();
         if(array_key_exists('input',$input)){
             if (strcasecmp(substr($input['input'], 0, 3), 'inv') === 0) {
-                $scan_collection = Scan::where('invoice_number',$input['input'])->first();
+                $scan = Scan::where('invoice_number',$input['input'])->first();
+                return redirect('/update-scan/'.$scan->id);
+
             }elseif(strcasecmp(substr($input['input'], 0, 2), 'po') === 0){
                 $scan_collection = Scan::where('order_number', $input['input'])->firstOrCreate([
                     'order_number' => $input['input']
@@ -20,9 +22,6 @@ class ScanController extends Controller
         }
         $currentDateTime = date('Y-m-d H:i:s');
         $scan = Scan::find($scan_collection->id);
-        if($scan->current_state=="confirmation_of_picking") {
-            return redirect('/update-scan/'.$scan->id);
-        }
 
         if($scan->current_state=="picked"){
             $scan->current_state = "confirmation_of_picking";
