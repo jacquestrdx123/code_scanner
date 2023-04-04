@@ -29,13 +29,16 @@ class ScanController extends Controller
 
         }
 
+        if($scan->current_state=="confirmation_of_picking"){
+            return redirect('/update-scan/'.$scan->id);
+        }
+
         if($scan->current_state=="picked"){
             $scan->current_state = "confirmation_of_picking";
             $scan->confirmation_time = $currentDateTime;
             $scan->save();
             $flash = "Picking confirmed";
             return redirect('/update-scan/'.$scan->id)->with('success', $flash);
-
         }
         if($scan->current_state=="order"){
             $scan->current_state = "picked";
