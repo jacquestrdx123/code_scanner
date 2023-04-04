@@ -76,7 +76,8 @@ class ScanController extends Controller
                 }
                 if($scan->current_state=="security"){
                     if($input['invoice_number']!==$scan->invoice_number){
-                        return redirect('/update-scan/'.$scan->id);
+                        $flash = "Error!! Order not found!";
+                        return redirect('/')->with('error', $flash);
                     }
                     $scan->current_state = "proof_of_delivery";
                     $scan->pod_time = $currentDateTime;
@@ -117,9 +118,7 @@ class ScanController extends Controller
                 break;
         }
 
-
-
-        return redirect('/');
+        return redirect('/')->with('success', $flash);
     }
 
     public function showUpdate($id){
