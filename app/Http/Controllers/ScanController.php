@@ -38,7 +38,7 @@ class ScanController extends Controller
             $scan->confirmation_time = $currentDateTime;
             $scan->save();
             $flash = "Picking confirmed";
-            return redirect('/update-scan/'.$scan->id)->with('success', $flash);
+            return redirect('/')->with('success', $flash);
         }
         if($scan->current_state=="order"){
             $scan->current_state = "picked";
@@ -156,9 +156,35 @@ class ScanController extends Controller
 
         $scans = Scan::where('created_at','>',$start)->where('created_at','<',$end)->get();
         $array = array();
-        $array[] = ["Number","Date"];
+        $array[] = [
+            "Order Number",
+            "Invoice Number",
+            "Order Date",
+            "Picking Date",
+            "Confirmation Date",
+            "Invoice Date",
+            "Loading Date",
+            "Loading Registration",
+            "Loading Date",
+            "Security Registration",
+            "Security Date",
+            "Proof of Delivery Date",
+            ];
         foreach($scans as $scan){
-            $array[] = [$scan->code,$scan->created_at];
+            $array[] = [
+                $scan->order_number,
+                $scan->invoice_number,
+                $scan->order_time,
+                $scan->picking_time,
+                $scan->confirmation_time,
+                $scan->invoice_time,
+                $scan->loading_time,
+                $scan->loading_registration,
+                $scan->security_time,
+                $scan->security_registration,
+                $scan->pod_time
+
+            ];
         }
         $xlsx = \App\SimpleXLSXGen::fromArray( $array );
         $date = date("Y-m-d");
