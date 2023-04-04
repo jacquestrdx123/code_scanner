@@ -9,11 +9,78 @@ class ScanController extends Controller
 {
     public function store(Request $request){
         $input = $request->all();
-        if(array_key_exists('pn_number',$input)){
-            $scan = new Scan();
-            $scan->code = $input['pn_number'];
+        if(array_key_exists('order_number',$input)){
+            $currentDateTime = date('Y-m-d H:i:s');
+            $scan = Scan::where('order_number', $input['order_number'])->firstOrCreate([
+                'order_number' => $input['order_number']
+            ]);
+        }
+        if($scan->current_state=="created"){
+            $scan->current_state = "order";
+            $scan->order_time = $currentDateTime;
             $scan->save();
         }
+        return view('update_scan',compact('scan'));
+    }
+    public function updateScan(Request $request){
+        $input = $request->all();
+        if(array_key_exists('order_number',$input)){
+            $currentDateTime = date('Y-m-d H:i:s');
+            $scan = Scan::where('order_number', $input['order_number'])->firstOrCreate([
+                'order_number' => $input['order_number']
+            ]);
+            if($scan->current_state=="confirmation_of_picking"){
+                $scan->current_state = "invoice";
+                $scan->invoice_number = $input['invoice_number'];
+                $scan->invoice_time = $currentDateTime;
+                $scan->save();
+            }
+            if($scan->current_state=="picked"){
+                $scan->current_state = "confirmation_of_picking";
+                $scan->confirmation_time = $currentDateTime;
+                $scan->save();
+            }
+            if($scan->current_state=="order"){
+                $scan->current_state = "picked";
+                $scan->picking_time = $currentDateTime;
+                $scan->save();
+            }
+            if($scan->current_state=="created"){
+                $scan->current_state = "order";
+                $scan->order_time = $currentDateTime;
+                $scan->save();
+            }
+
+
+        }else{
+            if(array_key_exists('invoice_number',$input)){
+                $currentDateTime = date('Y-m-d H:i:s');
+                $scan = Scan::where('invoice_number', $input['invoice_number'])->firstOrCreate([
+                    'invoice_number' => $input['invoice_number']
+                ]);
+                if($scan->current_state=="security"){
+                    $scan->current_state = "proof_of_delivery";
+                    $scan->pod_time = $currentDateTime;
+                    $scan->save();
+                }
+                if($scan->current_state=="loading"){
+                    $scan->current_state = "security";
+                    $scan->security_registration = $input['security_registration'];
+                    $scan->security_time = $currentDateTime;
+                    $scan->save();
+                }
+                if($scan->current_state=="invoice"){
+                    $scan->current_state = "loading";
+                    $scan->loading_registration = $input['loading_registration'];
+                    $scan->loading_time = $currentDateTime;
+                    $scan->save();
+                }
+
+
+            }
+        }
+
+
         return redirect('/');
     }
 
