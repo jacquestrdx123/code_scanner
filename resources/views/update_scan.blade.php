@@ -87,6 +87,9 @@
                 <!-- Replace with your content -->
                 <div class="px-4 py-8 sm:px-0">
                     <div class="h-96 flex justify-center rounded-lg border-4 border-gray-200">
+                        <div>
+                            <h4>Last State Completed : {{$scan->current_state}}</h4>
+                        </div>
                             <form method="POST" action="/update-scan">
                                 @csrf
                                 @if( ($scan->current_state == "confirmation_of_picking") )
@@ -99,9 +102,41 @@
                                         </div>
                                     </div>
                                 @endif
+                                @if( ($scan->current_state == "invoice") )
+                                    <div class="flex-col justify-center">
+                                        <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Loading Registration Number</label>
+                                        <div class="flex mt-1">
+                                            <input type="text" autofocus name="loading_registration" id="loading_registration"
+                                                   class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                   placeholder="Loading Registration Number">
+                                        </div>
+                                    </div>
+                                @endif
+                                @if( ($scan->current_state == "loading") )
+                                    <div class="flex-col justify-center">
+                                        <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Security Registration Number</label>
+                                        <div class="flex mt-1">
+                                            <input type="text" autofocus name="security_registration" id="security_registration"
+                                                   class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                   placeholder="Loading Registration Number">
+                                        </div>
+                                    </div>
+                                @endif
+                                @if( ($scan->current_state == "security") )
+                                    <div class="flex-col justify-center">
+                                        <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Invoice Number</label>
+                                        <div class="flex mt-1">
+                                            <input type="text" autofocus name="invoice_number" id="invoice_number"
+                                                   class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                                   placeholder="Please re scan invoice number to confirm delivery">
+                                        </div>
+                                    </div>
+                                @endif
+
                                 <input style="display:none" type="hidden" name="scan_id" id="scan_id"
                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                        value="{!! $scan->id !!}">
+
 
                             </form>
                     </div>
