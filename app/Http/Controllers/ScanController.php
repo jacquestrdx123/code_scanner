@@ -16,6 +16,9 @@ class ScanController extends Controller
             ]);
         }
         $scan = Scan::find($scan_collection->id);
+        if($scan->current_state=="confirmation_of_picking") {
+            return redirect('/update-scan/'.$scan->id);
+        }
 
         if($scan->current_state=="picked"){
             $scan->current_state = "confirmation_of_picking";
