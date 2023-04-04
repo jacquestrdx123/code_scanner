@@ -55,6 +55,9 @@ class ScanController extends Controller
                     $scan->save();
                 }
                 if($scan->current_state=="security"){
+                    if($input['invoice_number']!==$scan->invoice_number){
+                        return redirect('/update-scan/'.$scan->id);
+                    }
                     $scan->current_state = "proof_of_delivery";
                     $scan->pod_time = $currentDateTime;
                     $scan->save();
