@@ -12,9 +12,8 @@ class Scan extends Model
     protected $fillable = [
         'created_at',
         'updated_at',
-        'code',
         'current_state',
-        'pn_number',
+        'order_number',
         'order_time',
         'picking_time',
         'confirmation_time',
