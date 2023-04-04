@@ -11,25 +11,26 @@ class ScanController extends Controller
         $input = $request->all();
         if(array_key_exists('order_number',$input)){
             $currentDateTime = date('Y-m-d H:i:s');
-            $scan = Scan::where('order_number', $input['order_number'])->firstOrCreate([
+            $scan_collection = Scan::where('order_number', $input['order_number'])->firstOrCreate([
                 'order_number' => $input['order_number']
             ]);
-            $scan->save();
         }
+        $scan = Scan::find($scan_collection->id);
         if($scan->current_state=="created"){
             $scan->current_state = "order";
             $scan->order_time = $currentDateTime;
             $scan->save();
         }
-        return redirect('/update-scan/'.$scan->id);
+        return redirect('/update-scan/'.$scan_item->id);
     }
     public function updateScan(Request $request){
         $input = $request->all();
         if(array_key_exists('order_number',$input)){
             $currentDateTime = date('Y-m-d H:i:s');
-            $scan = Scan::where('order_number', $input['order_number'])->firstOrCreate([
+            $scan_collection = Scan::where('order_number', $input['order_number'])->firstOrCreate([
                 'order_number' => $input['order_number']
             ]);
+            $scan = Scan::find($scan_collection->id);
             if($scan->current_state=="confirmation_of_picking"){
                 $scan->current_state = "invoice";
                 $scan->invoice_number = $input['invoice_number'];
@@ -56,9 +57,10 @@ class ScanController extends Controller
         }else{
             if(array_key_exists('invoice_number',$input)){
                 $currentDateTime = date('Y-m-d H:i:s');
-                $scan = Scan::where('invoice_number', $input['invoice_number'])->firstOrCreate([
+                $scan_collection = Scan::where('invoice_number', $input['invoice_number'])->firstOrCreate([
                     'invoice_number' => $input['invoice_number']
                 ]);
+                $scan = Scan::find($scan_collection->id);
                 if($scan->current_state=="security"){
                     $scan->current_state = "proof_of_delivery";
                     $scan->pod_time = $currentDateTime;
