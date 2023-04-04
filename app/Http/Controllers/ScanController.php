@@ -18,7 +18,6 @@ class ScanController extends Controller
         $scan = Scan::find($scan_collection->id);
         if($scan->current_state=="created"){
             $scan->current_state = "order";
-            $scan->order_number = $input['order_number'];
             $scan->order_time = $currentDateTime;
             $scan->save();
         }
