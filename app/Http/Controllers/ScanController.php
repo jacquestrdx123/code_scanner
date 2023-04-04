@@ -13,8 +13,8 @@ class ScanController extends Controller
             if (strcasecmp(substr($input['input'], 0, 3), 'inv') === 0) {
                 $scan_collection = Scan::where('invoice_number',$input['input'])->first();
             }elseif(strcasecmp(substr($input['input'], 0, 2), 'po') === 0){
-                $scan_collection = Scan::where('order_number', $input['order_number'])->firstOrCreate([
-                    'order_number' => $input['order_number']
+                $scan_collection = Scan::where('input', $input['input'])->firstOrCreate([
+                    'order_number' => $input['input']
                 ]);
             }
         }
