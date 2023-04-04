@@ -20,7 +20,7 @@ class ScanController extends Controller
             $scan->order_time = $currentDateTime;
             $scan->save();
         }
-        return redirect('/update-scan');
+        return redirect('/update-scan/'.$scan->id);
     }
     public function updateScan(Request $request){
         $input = $request->all();
