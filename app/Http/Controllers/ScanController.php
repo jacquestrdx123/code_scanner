@@ -33,7 +33,8 @@ class ScanController extends Controller
             $scan->current_state = "confirmation_of_picking";
             $scan->confirmation_time = $currentDateTime;
             $scan->save();
-            return redirect('/update-scan/'.$scan->id);
+            $flash = "Changed to Order successfully!";
+            return redirect('/update-scan/'.$scan->id)->with('success', $flash);
 
         }
         if($scan->current_state=="order"){
@@ -60,7 +61,7 @@ class ScanController extends Controller
                 $flash = "Loaded Scan";
                 break;
         }
-        return redirect('/')->with('success', $flash);;
+        return redirect('/')->with('success', $flash);
     }
     public function updateScan(Request $request){
         $input = $request->all();
