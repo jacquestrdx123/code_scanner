@@ -83,6 +83,11 @@
             </div>
         </header>
         <main>
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
                 <div class="px-4 py-8 sm:px-0">

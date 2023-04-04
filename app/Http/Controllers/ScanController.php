@@ -40,8 +40,21 @@ class ScanController extends Controller
             $scan->order_time = $currentDateTime;
             $scan->save();
         }
-
-        return redirect('/');
+        switch ($scan->current_state) {
+            case "order":
+                $flash = "Changed to Order successfully!";
+                break;
+            case "picked":
+                $flash = "Changed to Picked successfully!";
+                break;
+            case "confirmation_of_picking":
+                $flash = "Picking confirmed";
+                break;
+            default:
+                $flash = "Loaded Scan";
+                break;
+        }
+        return redirect('/')->with('success', $flash);;
     }
     public function updateScan(Request $request){
         $input = $request->all();
@@ -78,6 +91,23 @@ class ScanController extends Controller
                 $scan->security_time = $currentDateTime;
                 $scan->save();
             }
+        }
+        switch ($scan->current_state) {
+            case "invoice":
+                $flash = "Invoice Captured!";
+                break;
+            case "loading":
+                $flash = "Loading Registration Captured";
+                break;
+            case "security":
+                $flash = "Security Registration Captured";
+                break;
+            case "proof_of_delivery":
+                $flash = "Order Completed";
+                break;
+            default:
+                $flash = "Loaded Scan";
+                break;
         }
 
 

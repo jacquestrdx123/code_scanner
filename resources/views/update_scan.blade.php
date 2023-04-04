@@ -83,11 +83,16 @@
             </div>
         </header>
         <main>
+            @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
                 <div class="px-4 py-8 sm:px-0">
                     <div>
-                        <h2 class="text-3xl font-extrabold dark:text-white">Last State Completed : {{$scan->current_state}}</h2>
+                        <h2 class="text-3xl font-extrabold dark:text-white">Last State Completed : {{ucfirst($scan->current_state)}}</h2>
                     </div>
                 </div>
             </div>
