@@ -46,32 +46,39 @@ class ScanController extends Controller
     public function updateScan(Request $request){
         $input = $request->all();
         $scan = Scan::find($input['scan_id']);
+        $currentDateTime = date('Y-m-d H:i:s');
         if(array_key_exists('invoice_number',$input)){
-                $currentDateTime = date('Y-m-d H:i:s');
-                if($scan->current_state=="security"){
-                    $scan->current_state = "proof_of_delivery";
-                    $scan->pod_time = $currentDateTime;
-                    $scan->save();
-                }
-                if($scan->current_state=="loading"){
-                    $scan->current_state = "security";
-                    $scan->security_registration = $input['security_registration'];
-                    $scan->security_time = $currentDateTime;
-                    $scan->save();
-                }
-                if($scan->current_state=="invoice"){
-                    $scan->current_state = "loading";
-                    $scan->loading_registration = $input['loading_registration'];
-                    $scan->loading_time = $currentDateTime;
-                    $scan->save();
-                }
                 if($scan->current_state=="confirmation_of_picking") {
                     $scan->invoice_number = $input['invoice_number'];
                     $scan->current_state = "invoice";
                     $scan->invoice_time = $currentDateTime;
                     $scan->save();
                 }
+                if($scan->current_state=="security"){
+                    $scan->current_state = "proof_of_delivery";
+                    $scan->pod_time = $currentDateTime;
+                    $scan->save();
+                }
+        }
+        if(array_key_exists('loading_registration',$input)){
+            if($scan->current_state=="invoice"){
+                $scan->current_state = "loading";
+                $scan->loading_registration = $input['loading_registration'];
+                $scan->loading_time = $currentDateTime;
+                $scan->save();
             }
+        }
+        if(array_key_exists('security_registration',$input)){
+            if($scan->current_state=="loading"){
+                $scan->current_state = "security";
+                $scan->security_registration = $input['security_registration'];
+                $scan->security_time = $currentDateTime;
+                $scan->save();
+            }
+        }
+
+
+
         return redirect('/');
     }
 
