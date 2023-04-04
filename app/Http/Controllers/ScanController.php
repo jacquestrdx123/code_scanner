@@ -9,12 +9,16 @@ class ScanController extends Controller
 {
     public function store(Request $request){
         $input = $request->all();
-        if(array_key_exists('order_number',$input)){
-            $currentDateTime = date('Y-m-d H:i:s');
-            $scan_collection = Scan::where('order_number', $input['order_number'])->firstOrCreate([
-                'order_number' => $input['order_number']
-            ]);
+        if(array_key_exists('input',$input)){
+            if (strcasecmp(substr($input['input'], 0, 3), 'inv') === 0) {
+                $scan_collection = Scan::where('invoice_number',$input['input'])->first();
+            }elseif(strcasecmp(substr($input['input'], 0, 2), 'po') === 0){
+                $scan_collection = Scan::where('order_number', $input['order_number'])->firstOrCreate([
+                    'order_number' => $input['order_number']
+                ]);
+            }
         }
+        $currentDateTime = date('Y-m-d H:i:s');
         $scan = Scan::find($scan_collection->id);
         if($scan->current_state=="confirmation_of_picking") {
             return redirect('/update-scan/'.$scan->id);
