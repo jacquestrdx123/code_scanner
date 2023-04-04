@@ -79,7 +79,7 @@ class ScanController extends Controller
                 }
                 if($scan->current_state=="security"){
                     if($input['invoice_number']!==$scan->invoice_number){
-                        $flash = "Error!! Order not found!";
+                        $flash = "Error!! Invoice number not matching!";
                         return redirect('/')->with('error', $flash);
                     }
                     $scan->current_state = "proof_of_delivery";
