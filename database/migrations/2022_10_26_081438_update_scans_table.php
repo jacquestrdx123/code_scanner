@@ -17,9 +17,6 @@ return new class extends Migration
                 $table->string('current_state')->nullable();
             });
             Schema::table('scans', function (Blueprint $table) {
-                $table->string('order_nr')->nullable();
-            });
-            Schema::table('scans', function (Blueprint $table) {
                 $table->string('invoice_number')->nullable();
             });
             Schema::table('scans', function (Blueprint $table) {
