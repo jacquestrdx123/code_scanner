@@ -140,7 +140,7 @@
                                 @endif
                                 @if( ($scan->current_state == "security") )
                                     <div class="flex-col justify-center">
-                                        <p class="text-center block text-sm font-medium text-gray-700">Please re-scan invoice number to confirm delivery</p>
+                                        <p class="text-center block text-sm font-medium text-gray-700">Please re-scan invoice number to confirm delivery and close order</p>
                                         <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Invoice Number</label>
                                         <div class="flex mt-1">
                                             <input type="text" autofocus name="invoice_number" id="invoice_number"

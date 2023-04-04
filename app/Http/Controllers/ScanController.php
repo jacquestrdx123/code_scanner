@@ -33,7 +33,7 @@ class ScanController extends Controller
             $scan->current_state = "confirmation_of_picking";
             $scan->confirmation_time = $currentDateTime;
             $scan->save();
-            $flash = "Changed to Order successfully!";
+            $flash = "Picking confirmed";
             return redirect('/update-scan/'.$scan->id)->with('success', $flash);
 
         }
