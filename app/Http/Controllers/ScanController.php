@@ -69,6 +69,7 @@ class ScanController extends Controller
                 if($scan->current_state=="confirmation_of_picking") {
                     $scan->invoice_number = $input['invoice_number'];
                     $scan->current_status = "invoice";
+                    $scan->invoice_time = $currentDateTime;
                     $scan->save();
                 }
             }
