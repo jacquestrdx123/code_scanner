@@ -42,12 +42,9 @@ class ScanController extends Controller
     }
     public function updateScan(Request $request){
         $input = $request->all();
+        $scan = Scan::find($input['scan_id']);
         if(array_key_exists('invoice_number',$input)){
                 $currentDateTime = date('Y-m-d H:i:s');
-                $scan_collection = Scan::where('invoice_number', $input['invoice_number'])->firstOrCreate([
-                    'invoice_number' => $input['invoice_number']
-                ]);
-                $scan = Scan::find($scan_collection->id);
                 if($scan->current_state=="security"){
                     $scan->current_state = "proof_of_delivery";
                     $scan->pod_time = $currentDateTime;
@@ -65,8 +62,11 @@ class ScanController extends Controller
                     $scan->loading_time = $currentDateTime;
                     $scan->save();
                 }
-
-
+                if($scan->current_state=="confirmation_of_picking") {
+                    $scan->invoice_number = $input['invoice_number'];
+                    $scan->current_status = "invoice";
+                    $scan->save();
+                }
             }
         return redirect('/');
     }
