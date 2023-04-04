@@ -88,6 +88,11 @@
                     <span class="font-medium">{{ session()->get('success') }}</span>
                 </div>
             @endif
+            @if (session()->has('error'))
+                    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <span class="font-medium">{{ session()->get('error') }}</span>
+                    </div>
+            @endif
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
                 <div class="px-4 py-8 sm:px-0">

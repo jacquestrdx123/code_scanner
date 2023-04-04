@@ -21,7 +21,13 @@ class ScanController extends Controller
             }
         }
         $currentDateTime = date('Y-m-d H:i:s');
-        $scan = Scan::find($scan_collection->id);
+        try{
+            $scan = Scan::find($scan_collection->id);
+        }catch (\Exception $e){
+            $flash = "Error!! Order not found!";
+            return redirect('/')->with('error', $flash);;
+
+        }
 
         if($scan->current_state=="picked"){
             $scan->current_state = "confirmation_of_picking";
