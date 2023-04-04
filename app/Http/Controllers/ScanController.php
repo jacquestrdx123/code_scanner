@@ -165,7 +165,6 @@ class ScanController extends Controller
             "Invoice Date",
             "Loading Date",
             "Loading Registration",
-            "Loading Date",
             "Security Registration",
             "Security Date",
             "Proof of Delivery Date",
@@ -183,7 +182,6 @@ class ScanController extends Controller
                 $scan->security_time,
                 $scan->security_registration,
                 $scan->pod_time
-
             ];
         }
         $xlsx = \App\SimpleXLSXGen::fromArray( $array );
