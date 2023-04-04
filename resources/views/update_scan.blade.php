@@ -89,17 +89,6 @@
                     <div class="h-96 flex justify-center rounded-lg border-4 border-gray-200">
                             <form method="POST" action="/update-scan">
                                 @csrf
-                                @if( ($scan->current_state == "order") or ($scan->current_state == "picked") or ($scan->current_state == "confirmation_of_picking") )
-                                    <div class="flex-col justify-center">
-                                        <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Order Number</label>
-                                        <div class="flex mt-1">
-                                            <input type="text" autofocus name="order_number" id="order_number"
-                                                   class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                                   value="{!! $scan->order_number !!}"
-                                                   placeholder="Scan Here">
-                                        </div>
-                                    </div>
-                                @endif
                                 @if( ($scan->current_state == "confirmation_of_picking") )
                                     <div class="flex-col justify-center">
                                         <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Invoice Number</label>
