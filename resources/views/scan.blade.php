@@ -97,14 +97,6 @@
                                                placeholder="Scan Here">
                                     </div>
                                 </div>
-                                <div class="flex-col justify-center">
-                                    <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Invoice Number</label>
-                                    <div class="flex mt-1">
-                                        <input type="text" autofocus name="invoice_number" id="invoice_number"
-                                               class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                               placeholder="Scan Here">
-                                    </div>
-                                </div>
                             </form>
                     </div>
                 </div>
