@@ -20,7 +20,7 @@ class ScanController extends Controller
             $scan->order_time = $currentDateTime;
             $scan->save();
         }
-        return view('update_scan',compact('scan'));
+        return redirect('/update-scan');
     }
     public function updateScan(Request $request){
         $input = $request->all();
@@ -82,6 +82,11 @@ class ScanController extends Controller
 
 
         return redirect('/');
+    }
+
+    public function showUpdate($id){
+        $scan = Scan::find($id);
+        return view('update_scan',compact('scan'));
     }
 
     public function index(){

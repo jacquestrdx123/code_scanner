@@ -19,5 +19,6 @@ Route::get('/', function () {
 
 Route::resource('scan', App\Http\Controllers\ScanController::class);
 Route::post('update-scan', 'App\Http\Controllers\ScanController@updateScan');
+Route::get('update-scan/{id}', 'App\Http\Controllers\ScanController@showUpdate');
 Route::post('export', 'App\Http\Controllers\ScanController@exportToExcel');
 

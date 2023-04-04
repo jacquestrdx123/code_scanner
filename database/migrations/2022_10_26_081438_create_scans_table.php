@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('scans', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable();
+            $table->string('order_number')->nullable();
             $table->timestamps();
         });
     }
