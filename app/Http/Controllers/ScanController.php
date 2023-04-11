@@ -10,11 +10,11 @@ class ScanController extends Controller
     public function store(Request $request){
         $input = $request->all();
         if(array_key_exists('input',$input)){
-            if (strcasecmp(substr($input['input'], 0, 3), 'inv') === 0) {
+            if (strcasecmp(substr($input['input'], 0, 3), 'in') === 0) {
                 $scan = Scan::where('invoice_number',$input['input'])->first();
                 return redirect('/update-scan/'.$scan->id);
 
-            }elseif(strcasecmp(substr($input['input'], 0, 2), 'po') === 0){
+            }else{
                 $scan_collection = Scan::where('order_number', $input['input'])->firstOrCreate([
                     'order_number' => $input['input']
                 ]);
