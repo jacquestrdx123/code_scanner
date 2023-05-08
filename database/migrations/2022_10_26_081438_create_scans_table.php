@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('scans', function (Blueprint $table) {
             $table->id();
             $table->string('order_number')->nullable();
+            $table->string('current_state')->nullable();
+            $table->timestamp('order_time')->nullable();
+            $table->timestamp('picking_time')->nullable();
+            $table->timestamp('confirmation_time')->nullable();
+            $table->timestamp('invoice_time')->nullable();
             $table->timestamps();
         });
     }
