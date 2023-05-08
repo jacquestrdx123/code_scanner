@@ -113,7 +113,7 @@
                                         <input type="text" autofocus name="invoice[]"
                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                                placeholder="Scan Invoices Here">
-                                        <a href="#" onclick="remove_invoice_nr()">Remove</a>
+                                        <a href="#" onclick="remove_invoice_nr(this)">Remove</a>
                                     </div>
                                 </div>
                                 <input type="hidden" name="station" value="2">
@@ -143,7 +143,8 @@
     }
 
     function remove_invoice_nr(event){
-        event.parent().remove();
+        let parentDiv = event.parentNode;
+        parentDiv.remove();
     }
 
 </script>
