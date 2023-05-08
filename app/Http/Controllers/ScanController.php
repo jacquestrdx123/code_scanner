@@ -65,8 +65,10 @@ class ScanController extends Controller
                         }
                         $scan->save();
                         \Session::flash('success', "Invoice number captured successfully");
+                        return redirect()->back();
                     }else{
                         \Session::flash('error', "Order number captured does not exist");
+                        return redirect()->back();
                     }
                 case 5:
                     return view('scans.scan_loading');
