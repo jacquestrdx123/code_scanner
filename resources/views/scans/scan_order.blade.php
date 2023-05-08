@@ -92,7 +92,9 @@
                 <!-- Replace with your content -->
                 <div class="px-4 py-8 sm:px-0">
                     <div class="h-96 flex justify-center rounded-lg border-4 border-gray-200">
-                        <h2>Scan Document into Order Stage</h2>
+                        <p>
+                            <h2>Scan Document into Order Stage</h2>
+                        </p>
                             <form method="POST" action="/scan">
                                 @csrf
                                 <div class="flex-col justify-center">
