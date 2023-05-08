@@ -144,7 +144,7 @@
 
     function remove_invoice_nr(event){
         let parentDiv = event.parentNode;
-        parentDiv.remove();
+        console.log(parentDiv);
     }
 
 </script>
