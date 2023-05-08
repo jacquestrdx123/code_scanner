@@ -4,20 +4,51 @@ namespace App\Http\Controllers;
 
 use App\Models\Scan;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ScanController extends Controller
 {
     public function store(Request $request){
+        $currentDateTime = date('Y-m-d H:i:s');
         $input = $request->all();
-        if(array_key_exists('input',$input)){
-            if (strcasecmp(substr($input['input'], 0, 3), 'in') === 0) {
-                $scan = Scan::where('invoice_number',$input['input'])->first();
-                return redirect('/update-scan/'.$scan->id);
-
-            }else{
-                $scan_collection = Scan::where('order_number', $input['input'])->firstOrCreate([
-                    'order_number' => $input['input']
-                ]);
+        if(array_key_exists('station',$input)){
+            switch ($input['station']) {
+                case 1:
+                    $scan = Scan::firstOrNew([
+                        'order_number' => $input['order_number']
+                    ], [
+                        'order_number' => $input['order_number'],
+                        'current_state' => 'order',
+                        'order_time' => $currentDateTime
+                    ]);
+                    if (!$scan->exists) {
+                        $scan->save(); // Creates a new user
+                        \Session::flash('success', "Order number captured successfully");
+                    }else{
+                        \Session::flash('error', "Order number captured successfully");
+                    }
+                    return redirect()->back();
+                case 2:
+                    $scan = Scan::where('order_number',$input['order_number'])->first();
+                    if ($scan->isNotEmpty()) {
+                        $scan->picking_time = $currentDateTime;
+                        $scan->current_state = 'picking';
+                        $scan->save();
+                        \Session::flash('success', "Order number captured successfully");
+                    }else{
+                        \Session::flash('error', "Order number captured does not exist");
+                    }
+                    return redirect()->back();
+                case 3:
+                    return view('scans.scan_invoice');
+                case 4:
+                    return view('scans.scan_loading');
+                case 5:
+                    return view('scans.scan_security');
+                case 6:
+                    return view('scans.scan_pod');
+                default:
+                    return view('dashboard');
             }
         }
     }
