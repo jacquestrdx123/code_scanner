@@ -130,20 +130,19 @@
 
 <script>
     $("#add_invoice").on("click", function() {
-        add_invoice_nr("tattoo");
+        add_invoice_nr();
     });
     function add_invoice_nr() {
         let html = '<div class="flex mt-1">';
         html += '<input type="text" autofocus name="invoice[]"';
         html += 'class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"';
         html += 'placeholder="Scan Invoices Here">';
-        html += '<button class="btn button remove">Remove</button>';
+        html += '<a href="#" class="btn button removal_button">Remove</a>';
         html += '</div>';
         $("#invoices").append(html);
     }
 
-    $(".button remove").click(function(event) {
-        event.preventDefault();
+    $(".removal_button").click(function(event) {
         $(this).parents('.div').remove();
     });
 </script>
