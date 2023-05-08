@@ -113,7 +113,7 @@
                                         <input type="text" autofocus name="invoice[]"
                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                                placeholder="Scan Invoices Here">
-                                        <a href="#" onclick="remove_invoice_nr(this)">Remove</a>
+                                        <a href="#" class="invoice_remover" onclick="remove_invoice_nr(this)">Remove</a>
                                     </div>
                                 </div>
                                 <input type="hidden" name="station" value="2">
@@ -131,6 +131,9 @@
 <script>
     $("#add_invoice").on("click", function() {
         add_invoice_nr();
+    });
+    $(".invoice_remover").on("click", function(event) {
+        remove_invoice_nr(event);
     });
     function add_invoice_nr() {
         let html = '<div class="flex mt-1">';
