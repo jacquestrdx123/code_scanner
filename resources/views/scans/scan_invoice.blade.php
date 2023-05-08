@@ -107,13 +107,13 @@
                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                            placeholder="Scan Here">
                                 </div>
-                                <a id="add_invoice" href="#" class="btn button">Add Invoice</a>
+                                <a id="add_invoice" href="#" class="btn button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Invoice</a>
                                 <div id="invoices">
                                     <div class="flex mt-1">
                                         <input type="text" autofocus name="invoice[]"
                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                                placeholder="Scan Invoices Here">
-                                        <a href="#" class="invoice_remover" onclick="remove_invoice_nr(this)">Remove</a>
+                                        <a href="#" class="invoice_remover bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="remove_invoice_nr(this)">Remove</a>
                                     </div>
                                 </div>
                                 <input type="hidden" name="station" value="2">
@@ -140,7 +140,7 @@
         html += '<input type="text" autofocus name="invoice[]"';
         html += 'class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"';
         html += 'placeholder="Scan Invoices Here">';
-        html += '<a href="#" class="invoice_remover">Remove</a>';
+        html += '<a href="#" class="invoice_remover bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Remove</a>';
         html += '</div>';
         $("#invoices").append(html);
     }
