@@ -91,10 +91,12 @@
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
                 <div class="px-4 py-8 sm:px-0">
-                    <div class="h-96 flex justify-center rounded-lg border-4 border-gray-200">
+                    <div class="h-96 flex-col justify-center">
                         <p>
                             <h2>Scan Document into Order Stage</h2>
                         </p>
+                    </div>
+                    <div class="h-96 flex-col justify-center rounded-lg border-4 border-gray-200">
                             <form method="POST" action="/scan">
                                 @csrf
                                 <div class="flex-col justify-center">
