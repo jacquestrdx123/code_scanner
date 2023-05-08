@@ -82,17 +82,17 @@ class ScanController extends Controller
     public function show($id){
         switch ($id) {
             case 1:
-                return view('scans.order');
+                return view('scans.scan_order');
             case 2:
-                return view('scans.picking');
+                return view('scans.scan_picking');
             case 3:
-                return view('scans.invoice');
+                return view('scans.scan_invoice');
             case 4:
-                return view('scans.loading');
+                return view('scans.scan_loading');
             case 5:
-                return view('scans.security');
+                return view('scans.scan_security');
             case 6:
-                return view('scans.pod');
+                return view('scans.scan_pod');
             default:
                 return view('dashboard');
         }
