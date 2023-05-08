@@ -21,63 +21,6 @@ class ScanController extends Controller
             }
         }
     }
-    public function updateScan(Request $request){
-        $input = $request->all();
-        $scan = Scan::find($input['scan_id']);
-        $currentDateTime = date('Y-m-d H:i:s');
-        if(array_key_exists('invoice_number',$input)){
-                if($scan->current_state=="confirmation_of_picking") {
-                    $scan->invoice_number = $input['invoice_number'];
-                    $scan->current_state = "invoice";
-                    $scan->invoice_time = $currentDateTime;
-                    $scan->save();
-                }
-                if($scan->current_state=="security"){
-                    if($input['invoice_number']!==$scan->invoice_number){
-                        $flash = "Error!! Invoice number not matching!";
-                        return redirect('/')->with('error', $flash);
-                    }
-                    $scan->current_state = "proof_of_delivery";
-                    $scan->pod_time = $currentDateTime;
-                    $scan->save();
-                }
-        }
-        if(array_key_exists('loading_registration',$input)){
-            if($scan->current_state=="invoice"){
-                $scan->current_state = "loading";
-                $scan->loading_registration = $input['loading_registration'];
-                $scan->loading_time = $currentDateTime;
-                $scan->save();
-            }
-        }
-        if(array_key_exists('security_registration',$input)){
-            if($scan->current_state=="loading"){
-                $scan->current_state = "security";
-                $scan->security_registration = $input['security_registration'];
-                $scan->security_time = $currentDateTime;
-                $scan->save();
-            }
-        }
-        switch ($scan->current_state) {
-            case "invoice":
-                $flash = "Invoice Captured!";
-                break;
-            case "loading":
-                $flash = "Loading Registration Captured";
-                break;
-            case "security":
-                $flash = "Security Registration Captured";
-                break;
-            case "proof_of_delivery":
-                $flash = "Order Completed";
-                break;
-            default:
-                $flash = "Loaded Scan";
-                break;
-        }
-
-        return redirect('/')->with('success', $flash);
-    }
 
     public function show($id){
         switch ($id) {
