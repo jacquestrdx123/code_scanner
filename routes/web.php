@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('scan');
+    return view('welcome');
 });
 
 Route::resource('scan', App\Http\Controllers\ScanController::class);

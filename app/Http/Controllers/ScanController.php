@@ -20,51 +20,6 @@ class ScanController extends Controller
                 ]);
             }
         }
-        $currentDateTime = date('Y-m-d H:i:s');
-        try{
-            $scan = Scan::find($scan_collection->id);
-        }catch (\Exception $e){
-            $flash = "Error!! Order not found!";
-            return redirect('/')->with('error', $flash);;
-
-        }
-
-        if($scan->current_state=="confirmation_of_picking"){
-            return redirect('/update-scan/'.$scan->id);
-        }
-
-        if($scan->current_state=="picked"){
-            $scan->current_state = "confirmation_of_picking";
-            $scan->confirmation_time = $currentDateTime;
-            $scan->save();
-            $flash = "Picking confirmed";
-            return redirect('/')->with('success', $flash);
-        }
-        if($scan->current_state=="order"){
-            $scan->current_state = "picked";
-            $scan->picking_time = $currentDateTime;
-            $scan->save();
-        }
-        if($scan->current_state=="created"){
-            $scan->current_state = "order";
-            $scan->order_time = $currentDateTime;
-            $scan->save();
-        }
-        switch ($scan->current_state) {
-            case "order":
-                $flash = "Changed to Order successfully!";
-                break;
-            case "picked":
-                $flash = "Changed to Picked successfully!";
-                break;
-            case "confirmation_of_picking":
-                $flash = "Picking confirmed";
-                break;
-            default:
-                $flash = "Loaded Scan";
-                break;
-        }
-        return redirect('/')->with('success', $flash);
     }
     public function updateScan(Request $request){
         $input = $request->all();
@@ -122,6 +77,25 @@ class ScanController extends Controller
         }
 
         return redirect('/')->with('success', $flash);
+    }
+
+    public function show($id){
+        switch ($id) {
+            case 1:
+                return view('scans.order');
+            case 2:
+                return view('scans.picking');
+            case 3:
+                return view('scans.invoice');
+            case 4:
+                return view('scans.loading');
+            case 5:
+                return view('scans.security');
+            case 6:
+                return view('scans.pod');
+            default:
+                return view('dashboard');
+        }
     }
 
     public function showUpdate($id){
