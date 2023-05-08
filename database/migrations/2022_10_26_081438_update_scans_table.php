@@ -17,15 +17,6 @@ return new class extends Migration
                 $table->string('current_state')->nullable();
             });
             Schema::table('scans', function (Blueprint $table) {
-                $table->string('invoice_number')->nullable();
-            });
-            Schema::table('scans', function (Blueprint $table) {
-                $table->string('loading_registration')->nullable();
-            });
-            Schema::table('scans', function (Blueprint $table) {
-                $table->string('security_registration')->nullable();
-            });
-            Schema::table('scans', function (Blueprint $table) {
                 $table->timestamp('order_time')->nullable();
             });
             Schema::table('scans', function (Blueprint $table) {
@@ -34,18 +25,7 @@ return new class extends Migration
             Schema::table('scans', function (Blueprint $table) {
                 $table->timestamp('confirmation_time')->nullable();
             });
-            Schema::table('scans', function (Blueprint $table) {
-                $table->timestamp('invoice_time')->nullable();
-            });
-            Schema::table('scans', function (Blueprint $table) {
-                $table->timestamp('loading_time')->nullable();
-            });
-            Schema::table('scans', function (Blueprint $table) {
-                $table->timestamp('security_time')->nullable();
-            });
-            Schema::table('scans', function (Blueprint $table) {
-                $table->timestamp('pod_time')->nullable();
-            });
+
     }
 
     /**

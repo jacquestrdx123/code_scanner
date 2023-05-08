@@ -40,7 +40,22 @@ class ScanController extends Controller
                     }
                     return redirect()->back();
                 case 3:
-                    return view('scans.scan_invoice');
+                    $scan = Scan::where('order_number',$input['order_number'])->first();
+                    if ($scan->isNotEmpty()) {
+                        $scan->picking_time = $currentDateTime;
+                        $scan->current_state = 'picking';
+                        if(array_key_exists('invoices',$input)){
+                            foreach($input['invoices'] as $invoice){
+                                $invoice_str .= $invoice .",";
+                            }
+                        }
+                        $scan->invoice_nr = $invoice_str;
+                        $scan->save();
+                        \Session::flash('success', "Order number captured successfully");
+                    }else{
+                        \Session::flash('error', "Order number captured does not exist");
+                    }
+
                 case 4:
                     return view('scans.scan_loading');
                 case 5:
