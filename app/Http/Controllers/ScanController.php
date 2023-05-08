@@ -24,7 +24,7 @@ class ScanController extends Controller
                     ]);
                     if (!$scan->exists) {
                         $scan->save(); // Creates a new user
-                        \Session::flash('success', "Order number captured successfully");
+                        \Session::flash('success', "Order number captured successfully on system");
                     }else{
                         \Session::flash('error', "Order number captured successfully");
                     }
@@ -35,7 +35,7 @@ class ScanController extends Controller
                         $scan->picking_time = $currentDateTime;
                         $scan->current_state = 'picking';
                         $scan->save();
-                        \Session::flash('success', "Order number captured successfully");
+                        \Session::flash('success', "Order number captured successfully to Picking");
                     }else{
                         \Session::flash('error', "Order number captured does not exist");
                     }
@@ -65,7 +65,7 @@ class ScanController extends Controller
                             }
                         }
                         $scan->save();
-                        \Session::flash('success', "Invoice number captured successfully");
+                        \Session::flash('success', "Invoice number captured successfully to $scan->order_number");
                         return redirect()->back();
                     }else{
                         \Session::flash('error', "Order number captured does not exist");
