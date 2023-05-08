@@ -30,7 +30,7 @@ class ScanController extends Controller
                     return redirect()->back();
                 case 2:
                     $scan = Scan::where('order_number',$input['order_number'])->first();
-                    if ($scan->isNotEmpty()) {
+                    if ($scan->count()) {
                         $scan->picking_time = $currentDateTime;
                         $scan->current_state = 'picking';
                         $scan->save();
@@ -41,7 +41,7 @@ class ScanController extends Controller
                     return redirect()->back();
                 case 3:
                     $scan = Scan::where('order_number',$input['order_number'])->first();
-                    if ($scan->isNotEmpty()) {
+                    if ($scan->count()) {
                         $scan->confirmation_time = $currentDateTime;
                         $scan->current_state = 'confirm_picking';
                         $scan->save();
@@ -52,7 +52,7 @@ class ScanController extends Controller
                     return redirect()->back();
                 case 4:
                     $scan = Scan::where('order_number',$input['order_number'])->first();
-                    if ($scan->isNotEmpty()) {
+                    if ($scan->count()) {
                         $scan->current_state = 'invoice';
                         if(array_key_exists('invoices',$input)){
                             foreach($input['invoices'] as $invoice){
