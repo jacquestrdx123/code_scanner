@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('invoice_number')->nullable();
             $table->string('security_registration')->nullable();
             $table->string('loading_registration')->nullable();
-            $table->timestamp('invoice_time')->nullable();
             $table->timestamp('loading_time')->nullable();
             $table->timestamp('security_time')->nullable();
             $table->timestamp('pod_time')->nullable();

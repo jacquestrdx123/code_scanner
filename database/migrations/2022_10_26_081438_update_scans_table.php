@@ -25,6 +25,10 @@ return new class extends Migration
             Schema::table('scans', function (Blueprint $table) {
                 $table->timestamp('confirmation_time')->nullable();
             });
+            Schema::table('scans', function (Blueprint $table) {
+                $table->timestamp('invoice_time')->nullable();
+            });
+
 
     }
 

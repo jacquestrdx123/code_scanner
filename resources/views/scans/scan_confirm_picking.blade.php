@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 </head>
 <body>
 
@@ -94,7 +93,7 @@
                 <div class="px-4 py-8 sm:px-0">
                     <div class="flex-col justify-center">
                         <p>
-                        <h2>Scan Document into Invoicing Stage</h2>
+                        <h2>Scan Document into Confirmed Picking Stage</h2>
                         </p>
                     </div>
                     <div class="h-96 flex justify-center rounded-lg border-4 border-gray-200">
@@ -107,16 +106,7 @@
                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                            placeholder="Scan Here">
                                 </div>
-                                <a id="add_invoice" href="#" class="btn button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Invoice</a>
-                                <div id="invoices">
-                                    <div class="flex mt-1">
-                                        <input type="text" autofocus name="invoice[]"
-                                               class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                               placeholder="Scan Invoices Here">
-                                        <a href="#" class="invoice_remover bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="remove_invoice_nr(this)">Remove</a>
-                                    </div>
-                                </div>
-                                <input type="hidden" name="station" value="4">
+                                <input type="hidden" name="station" value="3">
                             </div>
                         </form>
                     </div>
@@ -128,30 +118,6 @@
 </div>
 
 
-<script>
-    $("#add_invoice").on("click", function() {
-        add_invoice_nr();
-    });
-    $(".invoice_remover").on("click", function(event) {
-        remove_invoice_nr(event);
-    });
-    function add_invoice_nr() {
-        let html = '<div class="flex mt-1">';
-        html += '<input type="text" autofocus name="invoice[]"';
-        html += 'class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"';
-        html += 'placeholder="Scan Invoices Here">';
-        html += '<a href="#" class="invoice_remover bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Remove</a>';
-        html += '</div>';
-        $("#invoices").append(html);
-    }
 
-    function remove_invoice_nr(div){
-        let parentDiv = div.parentNode;
-        console.log("Removing");
-        console.log(parentDiv);
-        parentDiv.remove();
-    }
-
-</script>
 </body>
 </html>
