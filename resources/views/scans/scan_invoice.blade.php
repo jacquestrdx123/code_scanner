@@ -113,7 +113,7 @@
                                         <input type="text" autofocus name="invoice[]"
                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                                placeholder="Scan Invoices Here">
-                                        <a class="button-primary" href="#">Remove</a>
+                                        <a class="removal_button" href="#">Remove</a>
                                     </div>
                                 </div>
                                 <input type="hidden" name="station" value="2">
