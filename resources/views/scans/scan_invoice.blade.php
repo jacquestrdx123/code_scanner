@@ -113,7 +113,7 @@
                                            placeholder="Scan Here">
                                 </div>
                                 <div class="mt-2 mb-2">
-                                    <a id="add_invoice" href="#" class="btn button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Invoice</a>
+                                    <a id="add_invoice" href="#" class="btn button bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Invoice</a>
                                 </div>
                                 <div id="invoices">
                                     <div class="flex mt-1">
@@ -124,6 +124,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="station" value="4">
+                                <input type="submit" class="btn button bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                             </div>
                         </form>
                     </div>
