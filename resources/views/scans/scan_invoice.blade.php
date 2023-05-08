@@ -112,7 +112,9 @@
                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                            placeholder="Scan Here">
                                 </div>
-                                <a id="add_invoice" href="#" class="btn button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Invoice</a>
+                                <div class="mt-2 mb-2">
+                                    <a id="add_invoice" href="#" class="btn button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Invoice</a>
+                                </div>
                                 <div id="invoices">
                                     <div class="flex mt-1">
                                         <input type="text" autofocus name="invoice[]"
