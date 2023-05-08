@@ -140,7 +140,7 @@
         html += '<input type="text" autofocus name="invoice[]"';
         html += 'class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"';
         html += 'placeholder="Scan Invoices Here">';
-        html += '<a href="#" class="btn button removal_button">Remove</a>';
+        html += '<a href="#" class="invoice_remover">Remove</a>';
         html += '</div>';
         $("#invoices").append(html);
     }
