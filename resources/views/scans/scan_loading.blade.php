@@ -107,9 +107,15 @@
                             <div class="flex-col justify-center">
                                 <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Scan Document</label>
                                 <div class="flex mt-1">
-                                    <input type="text" autofocus name="order_number" id="order_number"
+                                    <input type="text" autofocus name="invoice_number" id="invoice_number"
                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                            placeholder="Scan Invoice Here">
+                                </div>
+                                <label for="loading_registration" class="text-center block text-sm font-medium text-gray-700">Loading Registration</label>
+                                <div class="flex mt-1">
+                                    <input type="text" autofocus name="loading_registration" id="loading_registration"
+                                           class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                           placeholder="Scan Loading Registration plate">
                                 </div>
                                 <input type="hidden" name="station" value="5">
                             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
 use App\Models\Scan;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -71,11 +72,40 @@ class ScanController extends Controller
                         return redirect()->back();
                     }
                 case 5:
-                    return view('scans.scan_loading');
+                    $invoice = Invoice::where('invoice_nr',$input['invoice_number'])->first();
+                    if ($invoice->count()) {
+                        $invoice->loading_registration = $input['loading_registration'];
+                        $invoice->loading_time = $currentDateTime;
+                        $invoice->save();
+                        \Session::flash('success', "Invoice number captured successfully at Loading");
+                        return redirect()->back();
+                    }else{
+                        \Session::flash('error', "Invoice number captured does not exist");
+                        return redirect()->back();
+                    }
                 case 6:
-                    return view('scans.scan_security');
+                    $invoice = Invoice::where('invoice_nr',$input['invoice_number'])->first();
+                    if ($invoice->count()) {
+                        $invoice->security_registration = $input['security_registration'];
+                        $invoice->security_time = $currentDateTime;
+                        $invoice->save();
+                        \Session::flash('success', "Invoice number captured successfully at Security");
+                        return redirect()->back();
+                    }else{
+                        \Session::flash('error', "Invoice number captured does not exist");
+                        return redirect()->back();
+                    }
                 case 7:
-                    return view('scans.scan_pod');
+                    $invoice = Invoice::where('invoice_nr',$input['invoice_number'])->first();
+                    if ($invoice->count()) {
+                        $invoice->pod_time = $currentDateTime;
+                        $invoice->save();
+                        \Session::flash('success', "Invoice number captured successfully at Security");
+                        return redirect()->back();
+                    }else{
+                        \Session::flash('error', "Invoice number captured does not exist");
+                        return redirect()->back();
+                    }
                 default:
                     return view('dashboard');
             }
