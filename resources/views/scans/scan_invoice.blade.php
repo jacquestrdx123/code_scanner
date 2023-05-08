@@ -142,9 +142,9 @@
         $("#invoices").append(html);
     }
 
-    function remove_invoice_nr(event){
-        let parentDiv = event.parentNode;
-        console.log(parentDiv);
+    function remove_invoice_nr(div){
+        let parentDiv = div.parentNode;
+        parentDiv.remove();
     }
 
 </script>
