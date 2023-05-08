@@ -102,16 +102,15 @@
                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                            placeholder="Scan Here">
                                 </div>
+                                <a id="add_invoice" href="#" class="btn button">Add Invoice</a>
                                 <div id="invoices">
                                     <div class="flex mt-1">
                                         <input type="text" autofocus name="invoice[]"
                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                                placeholder="Scan Invoices Here">
-                                        <button class="btn button">Remove</button>
+                                        <a class="btn button">Remove</a>
                                     </div>
                                 </div>
-
-
                                 <input type="hidden" name="station" value="2">
                             </div>
                         </form>
@@ -125,6 +124,9 @@
 
 
 <script>
+    $("#add_invoice").on("click", function() {
+        add_invoice_nr("tattoo");
+    });
     function add_invoice_nr() {
         let html = '<div class="flex mt-1">';
         html += '<input type="text" autofocus name="invoice[]"';
