@@ -100,7 +100,7 @@ class ScanController extends Controller
                     if ($invoice->count()) {
                         $invoice->pod_time = $currentDateTime;
                         $invoice->save();
-                        \Session::flash('success', "Invoice number captured successfully at Security");
+                        \Session::flash('success', "Invoice number captured successfully at Delivery");
                         return redirect()->back();
                     }else{
                         \Session::flash('error', "Invoice number captured does not exist");
@@ -139,7 +139,8 @@ class ScanController extends Controller
     }
 
     public function index(){
-        $scans = Scan::paginate(10);
+        $scans = Scan::with('invoices')->paginate(10);
+
         return view('scans.index',compact('scans'));
     }
 

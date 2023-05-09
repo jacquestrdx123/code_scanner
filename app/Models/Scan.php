@@ -25,4 +25,8 @@ class Scan extends Model
         'security_time',
         'pod_time'
     ];
+
+    public function invoices(){
+        return $this->hasMany(Invoice::class);
+    }
 }
