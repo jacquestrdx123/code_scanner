@@ -107,6 +107,8 @@
                                                placeholder="Scan Here">
                                     </div>
                                 </div>
+                                <input type="hidden" name="station" value="7">
+
                             </form>
                     </div>
                 </div>
