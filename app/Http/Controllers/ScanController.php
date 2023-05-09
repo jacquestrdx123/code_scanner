@@ -164,7 +164,7 @@ class ScanController extends Controller
             $end = ' 2100-10-26 09:00:48';
         }
 
-        $scans = Scan::where('created_at','>',$start)->where('created_at','<',$end)->get();
+        $invoices = Invoice::with('scan')->where('created_at','>',$start)->where('created_at','<',$end)->get();
         $array = array();
         $array[] = [
             "Order Number",
@@ -179,19 +179,19 @@ class ScanController extends Controller
             "Security Date",
             "Proof of Delivery Date",
             ];
-        foreach($scans as $scan){
+        foreach($invoices as $invoice){
             $array[] = [
-                $scan->order_number,
-                $scan->invoice_number,
-                $scan->order_time,
-                $scan->picking_time,
-                $scan->confirmation_time,
-                $scan->invoice_time,
-                $scan->loading_time,
-                $scan->loading_registration,
-                $scan->security_time,
-                $scan->security_registration,
-                $scan->pod_time
+                $invoice->scan->order_number,
+                $invoice->invoice_number,
+                $invoice->scan->order_time,
+                $invoice->scan->picking_time,
+                $invoice->scan->confirmation_time,
+                $invoice->scan->invoice_time,
+                $invoice->loading_time,
+                $invoice->loading_registration,
+                $invoice->security_time,
+                $invoice->security_registration,
+                $invoice->pod_time
             ];
         }
         $xlsx = \App\SimpleXLSXGen::fromArray( $array );
