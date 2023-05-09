@@ -25,4 +25,8 @@ class Invoice extends Model
         'security_time',
         'pod_time'
     ];
+
+    public function scan(){
+        return $this->belongsTo(Scan::class);
+    }
 }
