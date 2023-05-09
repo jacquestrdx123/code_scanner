@@ -52,11 +52,11 @@ class ScanController extends Controller
                     }
                     return redirect()->back();
                 case 4:
+                    dd($input);
                     $scan = Scan::where('order_number',$input['order_number'])->first();
                     if ($scan->count()) {
                         $scan->current_state = 'invoice';
                         if(array_key_exists('invoices',$input)){
-                            var_dump($input['invoices']);
                             foreach($input['invoices'] as $invoice){
                                $invoice_obj = new Invoice();
                                $invoice_obj->scan_id = $scan->id;
