@@ -59,7 +59,7 @@ class ScanController extends Controller
                             foreach($input['invoices'] as $invoice){
                                $invoice_obj = new Invoice();
                                $invoice_obj->scan_id = $scan->id;
-                               $invoice_obj->invoice_nr = $invoice;
+                               $invoice_obj->invoice_number = $invoice;
                                $invoice_obj->save();
                                $scan->invoice_time = $currentDateTime;
                             }
@@ -72,7 +72,7 @@ class ScanController extends Controller
                         return redirect()->back();
                     }
                 case 5:
-                    $invoice = Invoice::where('invoice_nr',$input['invoice_number'])->first();
+                    $invoice = Invoice::where('invoice_number',$input['invoice_number'])->first();
                     if ($invoice->count()) {
                         $invoice->loading_registration = $input['loading_registration'];
                         $invoice->loading_time = $currentDateTime;
@@ -84,7 +84,7 @@ class ScanController extends Controller
                         return redirect()->back();
                     }
                 case 6:
-                    $invoice = Invoice::where('invoice_nr',$input['invoice_number'])->first();
+                    $invoice = Invoice::where('invoice_number',$input['invoice_number'])->first();
                     if ($invoice->count()) {
                         $invoice->security_registration = $input['security_registration'];
                         $invoice->security_time = $currentDateTime;
@@ -96,7 +96,7 @@ class ScanController extends Controller
                         return redirect()->back();
                     }
                 case 7:
-                    $invoice = Invoice::where('invoice_nr',$input['invoice_number'])->first();
+                    $invoice = Invoice::where('invoice_number',$input['invoice_number'])->first();
                     if ($invoice->count()) {
                         $invoice->pod_time = $currentDateTime;
                         $invoice->save();
