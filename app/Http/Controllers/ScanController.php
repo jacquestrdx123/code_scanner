@@ -56,6 +56,7 @@ class ScanController extends Controller
                     if ($scan->count()) {
                         $scan->current_state = 'invoice';
                         if(array_key_exists('invoices',$input)){
+                            var_dump($input['invoices']);
                             foreach($input['invoices'] as $invoice){
                                $invoice_obj = new Invoice();
                                $invoice_obj->scan_id = $scan->id;
