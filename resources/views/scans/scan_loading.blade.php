@@ -118,6 +118,7 @@
                                            placeholder="Scan Loading Registration plate">
                                 </div>
                                 <input type="hidden" name="station" value="5">
+                                <button type="submit" class="btn button bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Save</button>
                             </div>
                         </form>
                     </div>
