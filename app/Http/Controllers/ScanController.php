@@ -52,7 +52,6 @@ class ScanController extends Controller
                     }
                     return redirect()->back();
                 case 4:
-                    dd($input);
                     $scan = Scan::where('order_number',$input['order_number'])->first();
                     if ($scan->count()) {
                         $scan->current_state = 'invoice';
