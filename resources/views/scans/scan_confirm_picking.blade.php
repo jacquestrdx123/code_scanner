@@ -101,7 +101,7 @@
                         </p>
                     </div>
                     <div class="h-96 flex justify-center rounded-lg border-4 border-gray-200">
-                        <form method="POST" action="/scan">
+                        <form method='POST' @keydown.enter.prevent="submitForm" method="POST" action="/scan">
                             @csrf
                             <div class="flex-col justify-center">
                                 <label for="pn_number" class="text-center block text-sm font-medium text-gray-700">Scan Document</label>
