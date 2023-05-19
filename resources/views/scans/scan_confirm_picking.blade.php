@@ -110,6 +110,12 @@
                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                            placeholder="Scan Here">
                                 </div>
+                                <label for="name" class="text-center block text-sm font-medium text-gray-700">Name</label>
+                                <div class="flex mt-1">
+                                    <input type="text" autofocus name="name" id="name"
+                                           class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                           placeholder="Name Here">
+                                </div>
                                 <input type="hidden" name="station" value="3">
                                 <button type="submit" class="btn button bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Save</button>
 

@@ -32,6 +32,7 @@ class ScanController extends Controller
                 case 2:
                     $scan = Scan::where('order_number',$input['order_number'])->first();
                     if ($scan->count()) {
+                        $scan->picking_name = $input['name'];
                         $scan->picking_time = $currentDateTime;
                         $scan->current_state = 'picking';
                         $scan->save();
@@ -43,6 +44,7 @@ class ScanController extends Controller
                 case 3:
                     $scan = Scan::where('order_number',$input['order_number'])->first();
                     if ($scan->count()) {
+                        $scan->confirm_name = $input['name'];
                         $scan->confirmation_time = $currentDateTime;
                         $scan->current_state = 'confirm_picking';
                         $scan->save();
