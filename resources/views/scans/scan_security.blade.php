@@ -111,11 +111,11 @@
                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                            placeholder="Scan Invoice Here">
                                 </div>
-                                <label for="security_registration" class="text-center block text-sm font-medium text-gray-700">Security Registration</label>
+                                <label for="security_name" class="text-center block text-sm font-medium text-gray-700">Security Name</label>
                                 <div class="flex mt-1">
-                                    <input type="text" autofocus name="security_registration" id="security_registration"
+                                    <input type="text" autofocus name="security_name" id="security_name"
                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                           placeholder="Scan Security Registration plate">
+                                           placeholder="Scan Security Name plate">
                                 </div>
                                 <input type="hidden" name="station" value="6">
                                 <button type="submit" class="btn button bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Save</button>

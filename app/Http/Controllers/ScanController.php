@@ -88,7 +88,7 @@ class ScanController extends Controller
                 case 6:
                     $invoice = Invoice::where('invoice_number',$input['invoice_number'])->first();
                     if ($invoice->count()) {
-                        $invoice->security_registration = $input['security_registration'];
+                        $invoice->security_name = $input['security_name'];
                         $invoice->security_time = $currentDateTime;
                         $invoice->save();
                         \Session::flash('success', "Invoice number captured successfully at Security");
@@ -179,7 +179,7 @@ class ScanController extends Controller
             "Invoice Date",
             "Loading Date",
             "Loading Registration",
-            "Security Registration",
+            "Security Name",
             "Security Date",
             "Proof of Delivery Date",
             ];
@@ -196,7 +196,7 @@ class ScanController extends Controller
                 $invoice->loading_time,
                 $invoice->loading_registration,
                 $invoice->security_time,
-                $invoice->security_registration,
+                $invoice->security_name,
                 $invoice->pod_time
             ];
         }

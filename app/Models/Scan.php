@@ -23,7 +23,7 @@ class Scan extends Model
         'invoice_number',
         'loading_registration',
         'loading_time  ',
-        'security_registration',
+        'security_name',
         'security_time',
         'pod_time'
     ];

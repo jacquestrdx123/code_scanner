@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('scan_id')->nullable();
             $table->string('invoice_number')->nullable();
-            $table->string('security_registration')->nullable();
+            $table->string('security_name')->nullable();
             $table->string('loading_registration')->nullable();
             $table->timestamp('loading_time')->nullable();
             $table->timestamp('security_time')->nullable();
