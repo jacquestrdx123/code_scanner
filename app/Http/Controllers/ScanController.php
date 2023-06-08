@@ -195,8 +195,8 @@ class ScanController extends Controller
                 $invoice->scan->invoice_time,
                 $invoice->loading_time,
                 $invoice->loading_registration,
-                $invoice->security_time,
                 $invoice->security_name,
+                $invoice->security_time,
                 $invoice->pod_time
             ];
         }
